@@ -1,0 +1,12 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fafb;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}

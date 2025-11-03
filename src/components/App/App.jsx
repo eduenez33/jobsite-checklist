@@ -4,9 +4,10 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <p>howdy</p>
+    <div className="page">
+      <div className="page__content">
+        <Header />
+      </div>
     </div>
   );
 }
