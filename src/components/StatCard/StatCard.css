@@ -1,0 +1,23 @@
+.stat-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #fff;
+  border: 1px solid #ebeced;
+  border-radius: 14px;
+  flex-grow: 1;
+}
+
+.stat-card__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.stat-card__value {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+}
