@@ -1,3 +1,5 @@
+import { Route, Routes } from "react-router-dom";
+
 import Header from "../Header/Header";
 import Dashboard from "../Dashboard/Dashboard";
 import Footer from "../Footer/Footer";
