@@ -27,9 +27,10 @@
   border: none;
   border-radius: 8px;
   padding: 8px 12px;
-  font-size: 18px;
+  font-size: 14px;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .header__button:hover {
