@@ -1,4 +1,6 @@
 import Header from "../Header/Header";
+import Dashboard from "../Dashboard/Dashboard";
+import Footer from "../Footer/Footer";
 
 import "./App.css";
 
@@ -7,6 +9,8 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header />
+        <Dashboard />
+        <Footer />
       </div>
     </div>
   );
