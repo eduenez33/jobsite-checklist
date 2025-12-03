@@ -16,6 +16,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [activeSite, setActiveSite] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const handleCreateSiteClick = () => {
     setActiveModal("create-site");
@@ -42,15 +43,16 @@ function App() {
     }
   };
 
-  const handleCreateSiteSubmit = (siteData) => {
-    const newSite = {
-      ...siteData,
-      id: Date.now(), // Simple ID generation
-      createdAt: new Date().toISOString(),
-      status: siteData.status || "pending",
-    };
-    setSites((prev) => [newSite, ...prev]);
-    handleModalClose();
+  const handleCreateSiteSubmit = async (siteData) => {
+    try {
+      setError(null);
+      const newSite = await storageService.createSite(siteData);
+      setSites((prev) => [newSite, ...prev]);
+      handleModalClose();
+    } catch (err) {
+      setError("Failed to create site. Please try again.");
+      console.error(err);
+    }
   };
 
   const handleEditSiteSubmit = (updatedSiteData) => {
