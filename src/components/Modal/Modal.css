@@ -1,0 +1,112 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__content {
+  position: relative;
+  background: #f9fafb;
+  width: 500px;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal__title {
+  /* Title styles - ready for your customization */
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.modal__form {
+  /* Form container styles - ready for your customization */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.modal__fieldset {
+  background-color: #fff;
+  border: none;
+  margin: 0 0 24px;
+  padding: 24px;
+  border: 1px solid #ebeced;
+  border-radius: 14px;
+}
+
+.modal__field {
+  /* Form field wrapper styles - ready for your customization */
+  margin-bottom: 16px;
+}
+
+.modal__label {
+  /* Form label styles - ready for your customization */
+  display: block;
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.modal__input {
+  /* Input field styles - ready for your customization */
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.modal__select {
+  /* Select dropdown styles - ready for your customization */
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.modal__textarea {
+  /* Textarea styles - ready for your customization */
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal__buttons {
+  /* Button container styles - ready for your customization */
+  display: flex;
+  gap: 12px;
+}
+
+.modal__submit {
+  /* Submit button styles - ready for your customization */
+  cursor: pointer;
+  background-color: #f97316;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.modal__switch {
+  /* Secondary button styles - ready for your customization */
+  cursor: pointer;
+}
