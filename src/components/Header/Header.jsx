@@ -1,6 +1,12 @@
+import { MapPlus } from "lucide-react";
+import { useContext } from "react";
+import SitesContext from "../../contexts/SitesContext";
+
 import "./Header.css";
 
 function Header() {
+  const { handleCreateSiteClick } = useContext(SitesContext);
+
   return (
     <header className="header">
       <div className="header__text">
@@ -9,8 +15,9 @@ function Header() {
           Manage your construction sites and supply checklists
         </p>
       </div>
-      <button className="header__button">
-        + <span>Create New Site</span>
+      <button className="header__button" onClick={handleCreateSiteClick}>
+        <MapPlus />
+        <span>Create New Site</span>
       </button>
     </header>
   );
