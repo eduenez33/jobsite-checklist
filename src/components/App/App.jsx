@@ -82,6 +82,14 @@ function App() {
     };
   }, [activeModal]);
 
+  useEffect(() => {
+    const loadSites = async () => {
+      const data = await storageService.getAllSites();
+      setSites(data);
+    };
+    loadSites();
+  }, []);
+
   return (
     <SitesContext.Provider
       value={{
