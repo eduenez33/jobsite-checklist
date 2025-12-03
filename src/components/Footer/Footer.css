@@ -17,3 +17,13 @@
   font-size: 14px;
   color: #64748b;
 }
+
+.footer__link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: #1d4ed8;
+}
