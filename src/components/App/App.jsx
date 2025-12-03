@@ -15,6 +15,7 @@ function App() {
   const [sites, setSites] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [activeSite, setActiveSite] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleCreateSiteClick = () => {
     setActiveModal("create-site");
@@ -84,8 +85,10 @@ function App() {
 
   useEffect(() => {
     const loadSites = async () => {
+      setIsLoading(true);
       const data = await storageService.getAllSites();
       setSites(data);
+      setIsLoading(false);
     };
     loadSites();
   }, []);
