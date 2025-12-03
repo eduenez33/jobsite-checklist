@@ -31,6 +31,7 @@ const storageService = {
 
       const newSite = {
         id: Date.now(),
+        createdAt: new Date().toISOString(),
         ...siteData,
       };
 
