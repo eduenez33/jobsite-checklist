@@ -29,8 +29,9 @@
   padding: 8px 12px;
   font-size: 14px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
+  transition: background-color 0.2s ease;
 }
 
 .header__button:hover {

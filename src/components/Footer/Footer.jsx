@@ -5,7 +5,17 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <p className="footer__text">Developed by Edwin Duenez</p>
+      <p className="footer__text">
+        Developed by{" "}
+        <a
+          href="https://github.com/eduenez33"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer__link"
+        >
+          Edwin Duenez
+        </a>
+      </p>
       <p className="footer__date">{currentYear}</p>
     </footer>
   );
