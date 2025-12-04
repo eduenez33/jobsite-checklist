@@ -55,13 +55,22 @@ function App() {
     }
   };
 
-  const handleEditSiteSubmit = (updatedSiteData) => {
-    setSites((prev) =>
-      prev.map((site) =>
-        site.id === activeSite.id ? { ...site, ...updatedSiteData } : site
-      )
-    );
-    handleModalClose();
+  const handleEditSiteSubmit = async (updatedSiteData) => {
+    try {
+      setError(null);
+
+      const updatedSite = await storageService.updateSite(
+        activeSite.id,
+        updatedSiteData
+      );
+      setSites((prev) =>
+        prev.map((site) => (site.id === activeSite.id ? updatedSite : site))
+      );
+      handleModalClose();
+    } catch (err) {
+      setError("Failed to update site. Please try again.");
+      console.error(err);
+    }
   };
 
   const handleDeleteSite = () => {
