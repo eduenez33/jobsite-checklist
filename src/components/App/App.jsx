@@ -73,9 +73,19 @@ function App() {
     }
   };
 
-  const handleDeleteSite = () => {
-    setSites((prev) => prev.filter((site) => site.id !== activeSite.id));
-    handleModalClose();
+  const handleDeleteSite = async () => {
+    try {
+      setError(null);
+
+      await storageService.deleteSite(activeSite.id);
+
+      setSites((prev) => prev.filter((site) => site.id !== activeSite.id));
+
+      handleModalClose();
+    } catch (error) {
+      setError("Failed to delete site. Please try again.");
+      console.error(err);
+    }
   };
 
   useEffect(() => {
