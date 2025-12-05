@@ -59,26 +59,46 @@ export const geocodeAddress = async (address) => {
   }
 };
 
-// 2. Maps Script Loader:
-let isScriptLoaded = false;
 let isScriptLoading = false;
 let scriptLoadPromise = null;
 
 export const loadGoogleMapsScript = () => {
-  // Check if already loaded: if (window.google?.maps) return Promise.resolve();
-  // Check if loading: if (isScriptLoading) return scriptLoadPromise;
-  // Create script tag: document.createElement('script')
-  // src: `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`
-  // Return Promise that resolves on script.onload
-  // Store promise in scriptLoadPromise to prevent duplicates
+  if (window.google?.maps) return Promise.resolve();
+  if (isScriptLoading) return scriptLoadPromise;
+
+  isScriptLoading = true;
+
+  scriptLoadPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
+    script.async = true;
+
+    script.onload = () => {
+      isScriptLoading = false;
+      resolve();
+    };
+
+    script.onerror = () => {
+      isScriptLoading = false;
+      scriptLoadPromise = null;
+      reject(new Error("Failed to load Google Maps script"));
+    };
+
+    document.head.appendChild(script);
+  });
+  return scriptLoadPromise;
 };
 
-// 3. Optional helper:
 export const createMap = (element, options) => {
-  // new google.maps.Map(element, options)
-  // Returns map instance
+  if (!window.google?.maps) {
+    throw new Error("Google Maps not loaded");
+  }
+  return new window.google.maps.Map(element, options);
 };
 
 export const createMarker = (map, position, title) => {
-  // new google.maps.Marker({ map, position, title })
+  if (!window.google?.maps) {
+    throw new Error("Google Maps not loaded");
+  }
+  return new window.google.maps.Marker({ map, position, title });
 };
