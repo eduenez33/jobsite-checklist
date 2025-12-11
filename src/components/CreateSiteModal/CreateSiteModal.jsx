@@ -1,4 +1,6 @@
 import Modal from "../Modal/Modal";
+import { useState } from "react";
+import { geocodeAddress } from "../../utils/googleMapsService";
 import "./CreateSiteModal.css";
 
 function CreateSiteModal({
@@ -7,17 +9,39 @@ function CreateSiteModal({
   onOverlayClick,
   onSubmit,
 }) {
-  const handleSubmit = (e) => {
+  const [isGeocoding, setIsGeocoding] = useState(false);
+  const [geocodingError, setGeocodingError] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form data will be handled here later
+
     const formData = new FormData(e.target);
-    const siteData = {
-      name: formData.get("name"),
-      address: formData.get("address"),
-      status: formData.get("status"),
-      notes: formData.get("notes"),
-    };
-    onSubmit(siteData);
+    const address = formData.get("address");
+
+    setIsGeocoding(true);
+    setGeocodingError(null);
+
+    try {
+      const result = await geocodeAddress(address);
+      const siteData = {
+        name: formData.get("name"),
+        address: result.formattedAddress,
+        coordinates: { lat: result.lat, lng: result.lng },
+        status: formData.get("status"),
+        notes: formData.get("notes"),
+      };
+
+      onSubmit(siteData);
+
+      e.target.reset();
+
+      setIsGeocoding(false);
+      handleModalClose();
+    } catch (err) {
+      setGeocodingError(err.message);
+      setIsGeocoding(false);
+      return;
+    }
   };
 
   return (
@@ -28,7 +52,9 @@ function CreateSiteModal({
       title="Create New Site"
       onSubmit={handleSubmit}
       formName="create-site"
-      buttonText="Create Site"
+      buttonText={isGeocoding ? "Verifying address..." : "Create Site"}
+      isDisabled={isGeocoding}
+      errorMessage={geocodingError}
     >
       <fieldset className="modal__fieldset">
         <div className="modal__field">
@@ -56,6 +82,7 @@ function CreateSiteModal({
             className="modal__input"
             placeholder="Enter site address"
             required
+            onChange={() => setGeocodingError(null)}
           />
         </div>
 
