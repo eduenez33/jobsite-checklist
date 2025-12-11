@@ -13,6 +13,8 @@ function Modal({
   buttonText,
   secondButtonText,
   onSecondButtonClick,
+  isDisabled,
+  errorMessage,
 }) {
   if (!isOpen) return null;
 
@@ -25,18 +27,27 @@ function Modal({
         <h2 className="modal__title">{title}</h2>
         <form onSubmit={onSubmit} name={formName} className="modal__form">
           {children}
-          <div className="modal__buttons">
-            <button type="submit" className="modal__submit">
-              {buttonText}
-            </button>
-            {secondButtonText && (
+          <div className="modal__footer">
+            <div className="modal__buttons">
               <button
-                type="button"
-                className="modal__switch"
-                onClick={onSecondButtonClick}
+                type="submit"
+                className="modal__submit"
+                disabled={isDisabled}
               >
-                {secondButtonText}
+                {buttonText}
               </button>
+              {secondButtonText && (
+                <button
+                  type="button"
+                  className="modal__switch"
+                  onClick={onSecondButtonClick}
+                >
+                  {secondButtonText}
+                </button>
+              )}
+            </div>
+            {errorMessage && (
+              <p className="modal__error-message">{errorMessage}</p>
             )}
           </div>
         </form>

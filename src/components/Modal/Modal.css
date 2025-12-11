@@ -106,7 +106,23 @@
   border-radius: 8px;
 }
 
+.modal__submit:disabled {
+  background-color: #f5924b;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .modal__switch {
   /* Secondary button styles - ready for your customization */
   cursor: pointer;
+}
+
+.modal__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal__error-message {
+  color: #d20f1c;
 }
