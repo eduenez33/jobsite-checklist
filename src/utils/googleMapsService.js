@@ -59,11 +59,12 @@ export const geocodeAddress = async (address) => {
   }
 };
 
+let isScriptLoaded = false;
 let isScriptLoading = false;
 let scriptLoadPromise = null;
 
 export const loadGoogleMapsScript = () => {
-  if (window.google?.maps) return Promise.resolve();
+  if (isScriptLoaded || window.google?.maps) return Promise.resolve();
   if (isScriptLoading) return scriptLoadPromise;
 
   isScriptLoading = true;
@@ -74,6 +75,7 @@ export const loadGoogleMapsScript = () => {
     script.async = true;
 
     script.onload = () => {
+      isScriptLoaded = true;
       isScriptLoading = false;
       resolve();
     };
