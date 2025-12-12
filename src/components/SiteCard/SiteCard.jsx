@@ -24,7 +24,11 @@ function SiteCard({ site, onEdit, onDelete }) {
 
   return (
     <article className="site-card">
-      <MapDisplay address={site.address} coordinates={site.coordinates} />
+      <MapDisplay
+        address={site.address}
+        coordinates={site.coordinates}
+        height="250px"
+      />
       <div className="site-card__header">
         <h3 className="site-card__title">{site.name}</h3>
         <span className={`site-card__status ${getStatusColor(site.status)}`}>

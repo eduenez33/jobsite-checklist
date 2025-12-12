@@ -6,7 +6,8 @@
   background-color: #fff;
   border: 1px solid #ebeced;
   border-radius: 14px;
-  flex-grow: 1;
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - 32px) / 3);
 }
 
 .stat-card__title {

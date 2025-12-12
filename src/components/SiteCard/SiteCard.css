@@ -5,8 +5,9 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   gap: 16px;
-  flex-grow: ;
+  flex: 0 0 calc((100% - 32px) / 3);
 }
 
 .site-card__header {
