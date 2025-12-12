@@ -29,6 +29,7 @@ function CreateSiteModal({
         coordinates: { lat: result.lat, lng: result.lng },
         status: formData.get("status"),
         notes: formData.get("notes"),
+        checklist: [],
       };
 
       onSubmit(siteData);

@@ -93,6 +93,104 @@ const storageService = {
       throw error;
     }
   },
+  addChecklistItem: async (siteId, item) => {
+    try {
+      const sites = await storageService.getAllSites();
+      const siteIndex = sites.findIndex((site) => site.id === siteId);
+      const newItem = {
+        id: Date.now(),
+        text: item.text || "",
+        quantity: item.quantity || 0,
+        completed: item.completed ?? false,
+        ...item,
+      };
+
+      if (siteIndex === -1) {
+        throw new Error(`Site with id ${siteId} not found`);
+      }
+
+      const updatedSites = sites.map((site) =>
+        site.id === siteId
+          ? { ...site, checklist: [...(site.checklist || []), newItem] }
+          : site
+      );
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSites));
+
+      const updatedSite = updatedSites.find((site) => site.id === siteId);
+      return updatedSite;
+    } catch (error) {
+      console.error("Failed to add item to checklist:", error.message);
+      throw error;
+    }
+  },
+  updateChecklistItem: async (siteId, itemId, updates) => {
+    try {
+      const sites = await storageService.getAllSites();
+      const siteIndex = sites.findIndex((site) => site.id === siteId);
+
+      if (siteIndex === -1) {
+        throw new Error(`Site with id ${siteId} not found`);
+      }
+
+      const siteChecklist = sites[siteIndex].checklist;
+      const siteChecklistItem = siteChecklist.find(
+        (item) => item.id === itemId
+      );
+
+      if (!siteChecklistItem) {
+        throw new Error(`Checklist item with id ${itemId} not found`);
+      }
+
+      const updatedChecklistItem = {
+        ...siteChecklistItem,
+        ...updates,
+      };
+
+      const updatedSites = sites.map((site) => {
+        site.id === siteId
+          ? {
+              ...site,
+              checklist: site.checklist.map((item) =>
+                item.id === itemId ? updatedChecklistItem : item
+              ),
+            }
+          : site;
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSites));
+
+      const updatedSite = updatedSites.find((site) => site.id === siteId);
+      return updatedSite;
+    } catch (error) {
+      console.error("Failed to update checklist item:", error.message);
+      throw error;
+    }
+  },
+  deleteChecklistItem: async (siteId, itemId) => {
+    try {
+      const sites = await storageService.getAllSites();
+      const siteIndex = sites.findIndex((site) => site.id === siteId);
+
+      if (siteIndex === -1) {
+        throw new Error(`Site with id ${siteId} not found`);
+      }
+
+      const updatedSites = sites.map((site) =>
+        site.id === siteId
+          ? {
+              ...site,
+              checklist: site.checklist.filter((item) => item.id !== itemId),
+            }
+          : site
+      );
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSites));
+
+      const updatedSite = updatedSites.find((site) => site.id === siteId);
+      return updatedSite;
+    } catch (error) {}
+  },
 };
 
 export default storageService;
