@@ -1,3 +1,4 @@
+import MapDisplay from "../MapDisplay/MapDisplay";
 import "./SiteCard.css";
 
 function SiteCard({ site, onEdit, onDelete }) {
@@ -23,6 +24,7 @@ function SiteCard({ site, onEdit, onDelete }) {
 
   return (
     <article className="site-card">
+      <MapDisplay address={site.address} coordinates={site.coordinates} />
       <div className="site-card__header">
         <h3 className="site-card__title">{site.name}</h3>
         <span className={`site-card__status ${getStatusColor(site.status)}`}>
