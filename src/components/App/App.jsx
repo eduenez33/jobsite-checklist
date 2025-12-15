@@ -7,7 +7,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import SiteDetailView from "../SiteDetailView/SiteDetailView";
 import Footer from "../Footer/Footer";
 import CreateSiteModal from "../CreateSiteModal/CreateSiteModal";
-// import EditSiteModal from "../EditSiteModal/EditSiteModal";
+import EditSiteModal from "../EditSiteModal/EditSiteModal";
 // import DeleteSiteModal from "../DeleteSiteModal/DeleteSiteModal";
 import storageService from "../../utils/storageService";
 
@@ -143,12 +143,13 @@ function App() {
           onOverlayClick={handleOverlayClick}
           onSubmit={handleCreateSiteSubmit}
         />
-        {/* <EditSiteModal
+        <EditSiteModal
           isOpen={activeModal === "edit-site"}
           handleModalClose={handleModalClose}
+          onOverlayClick={handleOverlayClick}
           onSubmit={handleEditSiteSubmit}
           site={activeSite}
-        /> */}
+        />
         {/* <DeleteSiteModal
           isOpen={activeModal === "delete-site"}
           handleModalClose={handleModalClose}
