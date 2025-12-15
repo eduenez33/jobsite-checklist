@@ -88,24 +88,12 @@
   transition: all 0.2s ease;
 }
 
-.site-card__button--edit {
-  background: #f0f9ff;
-  border-color: #0ea5e9;
-  color: #0ea5e9;
-}
-
-.site-card__button--edit:hover {
-  background: #0ea5e9;
-  color: white;
-}
-
-.site-card__button--delete {
-  background: #fef2f2;
-  border-color: #ef4444;
-  color: #ef4444;
-}
-
-.site-card__button--delete:hover {
-  background: #ef4444;
-  color: white;
+.site-card__button_view {
+  width: 100%;
+  background-color: #f97316;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
 }

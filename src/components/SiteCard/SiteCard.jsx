@@ -1,7 +1,8 @@
-import MapDisplay from "../MapDisplay/MapDisplay";
+import { useNavigate } from "react-router-dom";
 import "./SiteCard.css";
 
 function SiteCard({ site, onEdit, onDelete }) {
+  const navigate = useNavigate();
   const getStatusColor = (status) => {
     switch (status) {
       case "active":
@@ -24,11 +25,6 @@ function SiteCard({ site, onEdit, onDelete }) {
 
   return (
     <article className="site-card">
-      <MapDisplay
-        address={site.address}
-        coordinates={site.coordinates}
-        height="250px"
-      />
       <div className="site-card__header">
         <h3 className="site-card__title">{site.name}</h3>
         <span className={`site-card__status ${getStatusColor(site.status)}`}>
@@ -46,18 +42,11 @@ function SiteCard({ site, onEdit, onDelete }) {
 
       <div className="site-card__actions">
         <button
-          className="site-card__button site-card__button--edit"
-          onClick={() => onEdit(site)}
+          className="site-card__button site-card__button_view"
+          onClick={() => navigate(`/site/${site.id}`)}
           type="button"
         >
-          Edit
-        </button>
-        <button
-          className="site-card__button site-card__button--delete"
-          onClick={() => onDelete(site)}
-          type="button"
-        >
-          Delete
+          View site details and supplies
         </button>
       </div>
     </article>
