@@ -46,14 +46,28 @@
   position: absolute;
   top: 24px;
   right: 12px;
-  background-color: #878e9a;
-  color: black;
   padding: 5px 12px;
   margin: 0;
   border-radius: 8px;
   text-transform: uppercase;
   font-size: 14px;
   line-height: 1.2;
+  font-weight: 500;
+}
+
+.site-detail__status--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.site-detail__status--active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.site-detail__status--completed {
+  background: #dbeafe;
+  color: #1e40af;
 }
 
 .site-detail__checklist {

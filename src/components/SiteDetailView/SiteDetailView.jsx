@@ -112,10 +112,12 @@ function SiteDetailView() {
               year: "numeric",
             })}
           </p>
+          <p className="site-detail__info-title">Notes</p>
+          <p className="site-detail__info-text">{site.notes}</p>
           <span
             className={`site-detail__status site-detail__status--${site.status}`}
           >
-            {site.status}
+            {site.status.charAt(0).toUpperCase() + site.status.slice(1)}
           </span>
         </div>
         <div className="site-detail__map">
