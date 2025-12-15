@@ -8,7 +8,7 @@ import SiteDetailView from "../SiteDetailView/SiteDetailView";
 import Footer from "../Footer/Footer";
 import CreateSiteModal from "../CreateSiteModal/CreateSiteModal";
 import EditSiteModal from "../EditSiteModal/EditSiteModal";
-// import DeleteSiteModal from "../DeleteSiteModal/DeleteSiteModal";
+import DeleteSiteModal from "../DeleteSiteModal/DeleteSiteModal";
 import storageService from "../../utils/storageService";
 
 import "./App.css";
@@ -86,9 +86,10 @@ function App() {
       setSites((prev) => prev.filter((site) => site.id !== activeSite.id));
 
       handleModalClose();
+      navigate("/");
     } catch (error) {
       setError("Failed to delete site. Please try again.");
-      console.error(err);
+      console.error(error);
     }
   };
 
@@ -150,12 +151,13 @@ function App() {
           onSubmit={handleEditSiteSubmit}
           site={activeSite}
         />
-        {/* <DeleteSiteModal
+        <DeleteSiteModal
           isOpen={activeModal === "delete-site"}
           handleModalClose={handleModalClose}
+          onOverlayClick={handleOverlayClick}
           onConfirm={handleDeleteSite}
           site={activeSite}
-        /> */}
+        />
       </div>
     </SitesContext.Provider>
   );
