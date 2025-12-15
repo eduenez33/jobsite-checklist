@@ -147,7 +147,7 @@ const storageService = {
         ...updates,
       };
 
-      const updatedSites = sites.map((site) => {
+      const updatedSites = sites.map((site) =>
         site.id === siteId
           ? {
               ...site,
@@ -155,8 +155,8 @@ const storageService = {
                 item.id === itemId ? updatedChecklistItem : item
               ),
             }
-          : site;
-      });
+          : site
+      );
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSites));
 
