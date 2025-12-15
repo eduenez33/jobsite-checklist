@@ -53,19 +53,6 @@ function SiteDetailView() {
     }
   };
 
-  const handleAddChecklistItem = async (siteId, itemText) => {
-    try {
-      const updatedSite = await storageService.addChecklistItem(siteId, {
-        text: itemText,
-      });
-      setSites((prevSites) =>
-        prevSites.map((s) => (s.id === siteId ? updatedSite : s))
-      );
-    } catch (error) {
-      console.error("Failed to add item:", error);
-    }
-  };
-
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
