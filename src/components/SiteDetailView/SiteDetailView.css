@@ -30,6 +30,32 @@
   margin-bottom: 24px;
 }
 
+.site-detail__title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-detail__edit-button {
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: #878e9a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  gap: 8px;
+}
+
+.site-detail__edit-button:hover {
+  background-color: #ebeced;
+  color: #333;
+}
+
 .site-detail__info-title {
   margin: 0;
   color: #878e9a;

@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 import SitesContext from "../../contexts/SitesContext";
 import MapDisplay from "../MapDisplay/MapDisplay";
 import storageService from "../../utils/storageService";
-import { MapPin, Calendar, X, SquarePlus } from "lucide-react";
+import { MapPin, Calendar, X, SquarePlus, Pencil } from "lucide-react";
 import "./SiteDetailView.css";
 
 function SiteDetailView() {
   const { siteId } = useParams();
 
-  const { sites, setSites } = useContext(SitesContext);
+  const { sites, setSites, handleEditSiteClick } = useContext(SitesContext);
 
   const [formData, setFormData] = useState({
     itemName: "",
@@ -84,7 +84,16 @@ function SiteDetailView() {
     <div className="site-detail">
       <div className="site-detail__header">
         <div className="site-detail__text">
-          <h2 className="site-detail__container-title">{site.name}</h2>
+          <div className="site-detail__title-section">
+            <h2 className="site-detail__container-title">{site.name}</h2>
+            <button
+              className="site-detail__edit-button"
+              onClick={() => handleEditSiteClick(site)}
+              title="Edit site details"
+            >
+              <Pencil size={16} /> Edit Site Details
+            </button>
+          </div>
           <p className="site-detail__info-title">
             <MapPin size={14} /> Address
           </p>
