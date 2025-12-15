@@ -1,5 +1,6 @@
 import { MapPlus } from "lucide-react";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import SitesContext from "../../contexts/SitesContext";
 
 import "./Header.css";
@@ -10,7 +11,9 @@ function Header() {
   return (
     <header className="header">
       <div className="header__text">
-        <h1 className="header__title">Listo.</h1>
+        <Link to="/">
+          <h1 className="header__title">Listo.</h1>
+        </Link>
         <p className="header__caption">
           Manage your construction sites and supply checklists
         </p>
