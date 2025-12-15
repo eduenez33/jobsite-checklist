@@ -1,0 +1,164 @@
+.site-detail__header {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: #f9fafb;
+  gap: 30px;
+}
+
+.site-detail__text {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #ebeced;
+  border-radius: 14px;
+  gap: 10px;
+  position: relative;
+}
+
+.site-detail__map {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #ebeced;
+  border-radius: 14px;
+}
+
+.site-detail__container-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.site-detail__info-title {
+  margin: 0;
+  color: #878e9a;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.site-detail__info-text {
+  margin: 0;
+  line-height: 1;
+}
+
+.site-detail__status {
+  position: absolute;
+  top: 24px;
+  right: 12px;
+  background-color: #878e9a;
+  color: black;
+  padding: 5px 12px;
+  margin: 0;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.site-detail__checklist {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #ebeced;
+  border-radius: 14px;
+  margin-top: 30px;
+}
+
+.site-detail__checklist-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebeced;
+}
+
+.site-detail__items {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+  width: 100%;
+  gap: 15px;
+}
+
+.site-detail__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-detail__checklist-item-text-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-detail__checklist-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.site-detail__checklist-button_type_add {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.site-detail__checklist-button:hover {
+  cursor: pointer;
+}
+
+.site-detail__checklist-item-text {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.site-detail__checklist-quantity {
+  font-size: 14px;
+  color: #878e9a;
+}
+
+.site-detail__add-item-form {
+  margin-top: 16px;
+}
+
+.site-detail__form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.site-detail__form-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ebeced;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.site-detail__form-input_type_number {
+  flex: 0 0 100px;
+}
+
+.site-detail__form-input::placeholder {
+  color: #c5c7cb;
+}
+
+.site-detail__form-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.site-detail__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
