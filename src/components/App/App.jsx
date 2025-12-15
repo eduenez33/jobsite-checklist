@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import SitesContext from "../../contexts/SitesContext";
 import Header from "../Header/Header";
@@ -14,6 +14,7 @@ import storageService from "../../utils/storageService";
 import "./App.css";
 
 function App() {
+  const navigate = useNavigate();
   const [sites, setSites] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [activeSite, setActiveSite] = useState({});
@@ -51,6 +52,7 @@ function App() {
       const newSite = await storageService.createSite(siteData);
       setSites((prev) => [newSite, ...prev]);
       handleModalClose();
+      navigate(`/site/${newSite.id}`);
     } catch (err) {
       setError("Failed to create site. Please try again.");
       console.error(err);
