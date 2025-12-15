@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./SiteCard.css";
 
-function SiteCard({ site, onEdit, onDelete }) {
+function SiteCard({ site }) {
   const navigate = useNavigate();
   const getStatusColor = (status) => {
     switch (status) {
