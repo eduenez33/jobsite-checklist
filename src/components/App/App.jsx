@@ -131,6 +131,17 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
+          {isLoading && (
+            <div className="app__loading">
+              <p>Loading sites...</p>
+            </div>
+          )}
+          {error && (
+            <div className="app__error-banner">
+              <p>{error}</p>
+              <button onClick={() => setError(null)}>Dismiss</button>
+            </div>
+          )}
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />} />
