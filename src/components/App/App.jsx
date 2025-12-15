@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import SitesContext from "../../contexts/SitesContext";
 import Header from "../Header/Header";
 import Dashboard from "../Dashboard/Dashboard";
+import SiteDetailView from "../SiteDetailView/SiteDetailView";
 import Footer from "../Footer/Footer";
 import CreateSiteModal from "../CreateSiteModal/CreateSiteModal";
 // import EditSiteModal from "../EditSiteModal/EditSiteModal";
@@ -127,7 +129,10 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header />
-          <Dashboard />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/site/:siteId" element={<SiteDetailView />} />
+          </Routes>
           <Footer />
         </div>
         <CreateSiteModal
