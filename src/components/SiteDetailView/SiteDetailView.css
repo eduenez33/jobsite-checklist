@@ -202,3 +202,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.site-detail__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  padding-bottom: 24px;
+}
+
+.site-detail__delete-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.site-detail__delete-button:hover {
+  background-color: #dc2626;
+}

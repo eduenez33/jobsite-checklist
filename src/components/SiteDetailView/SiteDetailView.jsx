@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import SitesContext from "../../contexts/SitesContext";
 import MapDisplay from "../MapDisplay/MapDisplay";
 import storageService from "../../utils/storageService";
-import { MapPin, Calendar, X, SquarePlus, Pencil } from "lucide-react";
+import { MapPin, Calendar, X, SquarePlus, Pencil, Trash2 } from "lucide-react";
 import "./SiteDetailView.css";
 
 function SiteDetailView() {
   const { siteId } = useParams();
+  const navigate = useNavigate();
 
-  const { sites, setSites, handleEditSiteClick } = useContext(SitesContext);
+  const { sites, setSites, handleEditSiteClick, handleDeleteSiteClick } =
+    useContext(SitesContext);
 
   const [formData, setFormData] = useState({
     itemName: "",
@@ -77,6 +79,16 @@ function SiteDetailView() {
       setFormData({ itemName: "", quantity: "", unit: "" });
     } catch (error) {
       console.error("Failed to add item:", error);
+    }
+  };
+
+  const handleDeleteSite = async () => {
+    try {
+      await storageService.deleteSite(site.id);
+      setSites((prev) => prev.filter((s) => s.id !== site.id));
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to delete site:", error);
     }
   };
 
@@ -201,6 +213,15 @@ function SiteDetailView() {
             <p>No items yet</p>
           </div>
         )}
+      </div>
+      <div className="site-detail__footer">
+        <button
+          className="site-detail__delete-button"
+          onClick={() => handleDeleteSiteClick(site)}
+          title="Delete this site"
+        >
+          <Trash2 size={16} /> Delete Site
+        </button>
       </div>
     </div>
   );
