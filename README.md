@@ -44,6 +44,21 @@ All data is stored locally in the browser using localStorage, ensuring privacy a
 - Google Maps API - Interactive map display for job site locations
 - Browser localStorage API - Client-side data persistence
 
+## URL Routes
+
+The application uses React Router with HashRouter for client-side navigation:
+
+- **`/`** (or `/#/`) - Dashboard home page displaying all job sites and statistics
+- **`/site/:siteId`** (or `/#/site/:siteId`) - Detailed view of a specific job site with its checklist
+
+**Example URLs:**
+- Production: `https://eduenez33.github.io/jobsite-checklist/#/`
+- Production Site Detail: `https://eduenez33.github.io/jobsite-checklist/#/site/1702856400000`
+- Local Dev: `http://localhost:3000/#/`
+- Local Dev Site Detail: `http://localhost:3000/#/site/1702856400000`
+
+> **Note:** HashRouter is used for GitHub Pages compatibility. All routes use the `#` prefix in the URL.
+
 ## API Endpoints (Local Storage Service)
 
 The application uses a custom storage service that mimics API behavior with localStorage:
