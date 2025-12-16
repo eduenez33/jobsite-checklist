@@ -48,7 +48,7 @@ function SiteDetailView() {
         { completed: !currentStatus }
       );
       setSites((prevSites) =>
-        prevSites.map((s) => (s.id === siteId ? updatedSite : s))
+        prevSites.map((site) => (site.id === siteId ? updatedSite : site))
       );
     } catch (error) {
       console.error("Failed to update item:", error);
@@ -74,7 +74,9 @@ function SiteDetailView() {
         unit: formData.unit || "Units",
       });
       setSites((prevSites) =>
-        prevSites.map((site) => (site.id === site.id ? updatedSite : site))
+        prevSites.map((currentSite) =>
+          currentSite.id === site.id ? updatedSite : currentSite
+        )
       );
       setFormData({ itemName: "", quantity: "", unit: "" });
     } catch (error) {
