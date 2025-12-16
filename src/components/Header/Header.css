@@ -5,6 +5,16 @@
   justify-content: space-between;
 }
 
+.header__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .header__title {
   font-family: "Badeen Display", Helvetica, sans-serif;
   margin: 0 0 10px;

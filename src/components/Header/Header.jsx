@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header__text">
-        <Link to="/">
+        <Link to="/" className="header__link">
           <h1 className="header__title">Listo.</h1>
         </Link>
         <p className="header__caption">
