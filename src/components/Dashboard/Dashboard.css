@@ -1,7 +1,7 @@
 .dashboard__stats {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .dashboard__sites {
@@ -9,9 +9,9 @@
 }
 
 .dashboard__sites-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .dashboard__empty-state {
@@ -20,4 +20,14 @@
   line-height: 1.5;
   padding-top: 48px;
   text-align: center;
+}
+
+@media screen and (max-width: 745px) {
+  .dashboard__stats {
+    gap: 5px;
+  }
+
+  .dashboard__sites-container {
+    grid-template-columns: unset;
+  }
 }
