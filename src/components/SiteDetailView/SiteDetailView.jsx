@@ -105,7 +105,7 @@ function SiteDetailView() {
               onClick={() => handleEditSiteClick(site)}
               title="Edit site details"
             >
-              <Pencil size={16} /> Edit Site Details
+              <Pencil size={12} /> Edit Site Details
             </button>
           </div>
           <p className="site-detail__info-title">
@@ -131,7 +131,9 @@ function SiteDetailView() {
           </span>
         </div>
         <div className="site-detail__map">
-          <h2 className="site-detail__container-title">Location</h2>
+          <div className="site-detail__title-section">
+            <h2 className="site-detail__container-title">Location</h2>
+          </div>
           <MapDisplay
             address={site.address}
             coordinates={site.coordinates}
@@ -141,44 +143,44 @@ function SiteDetailView() {
       </div>
       <div className="site-detail__checklist">
         <div className="site-detail__checklist-header">
-          <h2 className="site-detail__container-title">Supply Checklist</h2>
+          <div className="site-detail__title-section">
+            <h2 className="site-detail__container-title">Supply Checklist</h2>
+          </div>
         </div>
         <form
           onSubmit={handleFormSubmit}
           className="site-detail__add-item-form"
         >
-          <div className="site-detail__form-row">
-            <input
-              type="text"
-              name="itemName"
-              value={formData.itemName}
-              onChange={handleFormChange}
-              placeholder="Item name"
-              className="site-detail__form-input"
-            />
-            <input
-              type="number"
-              name="quantity"
-              value={formData.quantity}
-              onChange={handleFormChange}
-              placeholder="Quantity"
-              className="site-detail__form-input site-detail__form-input_type_number"
-            />
-            <input
-              type="text"
-              name="unit"
-              value={formData.unit}
-              onChange={handleFormChange}
-              placeholder="Unit (e.g., kg, boxes)"
-              className="site-detail__form-input"
-            />
-            <button
-              type="submit"
-              className="site-detail__checklist-button site-detail__checklist-button_type_add"
-            >
-              <SquarePlus size={16} /> Add Item
-            </button>
-          </div>
+          <input
+            type="text"
+            name="itemName"
+            value={formData.itemName}
+            onChange={handleFormChange}
+            placeholder="Item name"
+            className="site-detail__form-input"
+          />
+          <input
+            type="number"
+            name="quantity"
+            value={formData.quantity}
+            onChange={handleFormChange}
+            placeholder="Quantity"
+            className="site-detail__form-input site-detail__form-input_type_number"
+          />
+          <input
+            type="text"
+            name="unit"
+            value={formData.unit}
+            onChange={handleFormChange}
+            placeholder="Unit (e.g., kg, boxes)"
+            className="site-detail__form-input"
+          />
+          <button
+            type="submit"
+            className="site-detail__checklist-button site-detail__checklist-button_type_add"
+          >
+            <SquarePlus size={16} /> Add Item
+          </button>
         </form>
         {site.checklist && site.checklist.length > 0 ? (
           <ul className="site-detail__items">
