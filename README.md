@@ -5,6 +5,7 @@ A React-based web application for managing construction job sites and their asso
 ## Live Demo
 
 [View Live Application](https://eduenez33.github.io/jobsite-checklist/)
+[View Video Demo](https://www.loom.com/share/d5cf938140c849eb830398105c32647a)
 
 ## Overview
 
@@ -52,6 +53,7 @@ The application uses React Router with HashRouter for client-side navigation:
 - **`/site/:siteId`** (or `/#/site/:siteId`) - Detailed view of a specific job site with its checklist
 
 **Example URLs:**
+
 - Production: `https://eduenez33.github.io/jobsite-checklist/#/`
 - Production Site Detail: `https://eduenez33.github.io/jobsite-checklist/#/site/1702856400000`
 - Local Dev: `http://localhost:3000/#/`
