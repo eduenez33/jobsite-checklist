@@ -189,7 +189,10 @@ const storageService = {
 
       const updatedSite = updatedSites.find((site) => site.id === siteId);
       return updatedSite;
-    } catch (error) {}
+    } catch (error) {
+      console.error("Failed to add item to site:", error);
+      throw error;
+    }
   },
 };
 
