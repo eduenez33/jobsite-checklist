@@ -84,16 +84,6 @@ function SiteDetailView() {
     }
   };
 
-  const handleDeleteSite = async () => {
-    try {
-      await storageService.deleteSite(site.id);
-      setSites((prev) => prev.filter((s) => s.id !== site.id));
-      navigate("/");
-    } catch (error) {
-      console.error("Failed to delete site:", error);
-    }
-  };
-
   return (
     <div className="site-detail">
       <div className="site-detail__header">
