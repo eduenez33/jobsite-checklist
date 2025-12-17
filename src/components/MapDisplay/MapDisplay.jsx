@@ -73,7 +73,7 @@ function MapDisplay({ address, coordinates, height = "400px" }) {
 
     return () => {
       if (markerRef.current) {
-        google.maps.event.clearInstanceListeners(markerRef.current);
+        window.google.maps.event.clearInstanceListeners(markerRef.current);
       }
       if (infoWindowRef.current) {
         infoWindowRef.current.close();
