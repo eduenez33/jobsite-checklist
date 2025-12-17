@@ -1,0 +1,106 @@
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+export const geocodeAddress = async (address) => {
+  if (!address || typeof address !== "string" || address.trim() === "") {
+    throw new Error("Address is required");
+  }
+
+  const baseUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+  const params = new URLSearchParams({
+    address: address.trim(),
+    key: API_KEY,
+  });
+  const url = `${baseUrl}?${params}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    switch (data.status) {
+      case "OK":
+        break;
+
+      case "ZERO_RESULTS":
+        throw new Error("Address not found");
+
+      case "OVER_QUERY_LIMIT":
+        throw new Error("API quota exceeded. Please try again later.");
+
+      case "REQUEST_DENIED":
+        throw new Error("API request denied. Check API key configuration.");
+
+      case "INVALID_REQUEST":
+        throw new Error("Invalid geocoding request");
+
+      default:
+        throw new Error(`Geocoding failed: ${data.status}`);
+    }
+
+    const result = data.results[0];
+
+    return {
+      lat: result.geometry.location.lat,
+      lng: result.geometry.location.lng,
+      formattedAddress: result.formatted_address,
+    };
+  } catch (error) {
+    if (
+      error.name === "TypeError" ||
+      error.message.includes("Failed to fetch")
+    ) {
+      throw new Error("Network error. Please check your internet connection.");
+    }
+    throw error;
+  }
+};
+
+let isScriptLoaded = false;
+let isScriptLoading = false;
+let scriptLoadPromise = null;
+
+export const loadGoogleMapsScript = () => {
+  if (isScriptLoaded || window.google?.maps) return Promise.resolve();
+  if (isScriptLoading) return scriptLoadPromise;
+
+  isScriptLoading = true;
+
+  scriptLoadPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
+    script.async = true;
+
+    script.onload = () => {
+      isScriptLoaded = true;
+      isScriptLoading = false;
+      resolve();
+    };
+
+    script.onerror = () => {
+      isScriptLoading = false;
+      scriptLoadPromise = null;
+      reject(new Error("Failed to load Google Maps script"));
+    };
+
+    document.head.appendChild(script);
+  });
+  return scriptLoadPromise;
+};
+
+export const createMap = (element, options) => {
+  if (!window.google?.maps) {
+    throw new Error("Google Maps not loaded");
+  }
+  return new window.google.maps.Map(element, options);
+};
+
+export const createMarker = (map, position, title) => {
+  if (!window.google?.maps) {
+    throw new Error("Google Maps not loaded");
+  }
+  return new window.google.maps.Marker({ map, position, title });
+};

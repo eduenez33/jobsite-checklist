@@ -1,0 +1,39 @@
+.delete-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.delete-modal__message {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.modal__form[name="delete-site"] .modal__submit {
+  background-color: #ef4444;
+}
+
+.modal__form[name="delete-site"] .modal__submit:hover {
+  background-color: #dc2626;
+}
+
+.modal__form[name="delete-site"] .modal__submit:disabled {
+  background-color: #f87171;
+  cursor: not-allowed;
+}
+
+.modal__form[name="delete-site"] .modal__switch {
+  background-color: #ebeced;
+  color: #333;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.modal__form[name="delete-site"] .modal__switch:hover {
+  background-color: #d6d7da;
+}

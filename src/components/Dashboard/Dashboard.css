@@ -1,0 +1,33 @@
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dashboard__sites {
+  margin-top: 32px;
+}
+
+.dashboard__sites-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dashboard__empty-state {
+  color: #7b899b;
+  font-size: 16px;
+  line-height: 1.5;
+  padding-top: 48px;
+  text-align: center;
+}
+
+@media screen and (max-width: 745px) {
+  .dashboard__stats {
+    gap: 5px;
+  }
+
+  .dashboard__sites-container {
+    grid-template-columns: unset;
+  }
+}

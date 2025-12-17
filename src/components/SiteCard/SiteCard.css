@@ -1,0 +1,106 @@
+.site-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 16px;
+  flex: 0 0 calc((100% - 32px) / 3);
+}
+
+.site-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.site-card__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.site-card__status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-card__status--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.site-card__status--active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.site-card__status--completed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.site-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-card__address {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.site-card__notes {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 60px;
+  line-height: 20px;
+}
+
+.site-card__date {
+  margin: 0;
+  color: #888;
+  font-size: 12px;
+}
+
+.site-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.site-card__button {
+  padding: 8px 16px;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.site-card__button_view {
+  width: 100%;
+  background-color: #f97316;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+}

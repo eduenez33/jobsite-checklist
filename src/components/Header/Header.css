@@ -1,0 +1,50 @@
+.header {
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__title {
+  font-family: "Badeen Display", Helvetica, sans-serif;
+  margin: 0 0 10px;
+  font-size: 55px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.header__caption {
+  margin: 0;
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.header__button {
+  background-color: #f97316;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  background-color: #f98239;
+}
